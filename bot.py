@@ -44,7 +44,7 @@ def ping():
 
 def sendmsg(msg, target):
     """
-    This function sends messages.
+    This function sends messages Takes the payload in first arg then target.
     """
     ircsock.send(bytes("PRIVMSG " + target + " :" + msg + "\n", "UTF-8"))
 
@@ -54,6 +54,7 @@ def messageanalyser(botnick, ctfmode):
     This function receive the messages and analyse them
     It can call other functions in reaction.
     """
+
     ircmsg = ircsock.recv(2048).decode("UTF-8")
     ircmsg = ircmsg.strip('\n\r')
     # Usefull to debug
@@ -71,8 +72,6 @@ def messageanalyser(botnick, ctfmode):
             sendmsg(response, nickresp)
 
     if message.find('Hi ' + botnick) != -1:
-        # debug test because what the hell is this condition ???
-        print("We are in for some reason ¯\_(ツ)_/¯")
         sendmsg("Hello " + name + "!", name)
 
     # Required. If not implemented, might be kicked from the server
@@ -90,7 +89,7 @@ def main():
     """
     server = "chat.freenode.net"  # Server
     port = 6667  # The port is 6667 on most servers
-    channel = "#amasingchannel"  # Channel
+    channel = "#amazingchannel"  # Channel
     botnick = "Mini-Jarvis"  # Your bots nick
     adminname = "Me"  # Your IRC nickname.
     exitcode = "bye " + botnick
