@@ -64,7 +64,8 @@ def messageanalyser(botnick, ctfmode):
         message = ircmsg.split('PRIVMSG', 1)[1].split(':', 1)[1]
 
     # Fun function to see the syntax and how it works.
-    if ctfmode is True:
+    if ctfmode:
+        print(message)
         response, nickresp = ctf.main(message, name)
         if response != "nope":
             sendmsg(response, nickresp)
@@ -93,7 +94,7 @@ def main():
     botnick = "Mini-Jarvis"  # Your bots nick
     adminname = "Me"  # Your IRC nickname.
     exitcode = "bye " + botnick
-    ctfmode = False
+    ctfmode = True
 
     connecttoserv(server, port, botnick)
     joinchan(channel)
