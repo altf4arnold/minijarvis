@@ -10,3 +10,7 @@ virtualenv -p python3.7 ve3
 source ve3/bin/activate
 python bot.py
 ```
+
+## Tricky part :
+Warning, there is a .find in the code that needs to be modified if you are using this bot on something other then a freenode irc server.
+It will indicate to the bot when he is connected.
