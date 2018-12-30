@@ -1,23 +1,12 @@
 """
 This bot is a IRCbot base and was first used to solver a challenge on a CTF.
+It was inspired by some internet posts and then adapted here.
+I tried to make a base bot that basicaly could be adapted to be used in other
+situations
 """
 
 import socket
 import ctf
-
-
-def stringdecorticator(message):
-    """
-    Thank you stack overflow
-    """
-    numbers = [int(s) for s in message.split() if s.isdigit()]
-    return challengepurpose(numbers[0], numbers[1])
-
-
-"""
-This is going to be dirty. It's basicaly a lot of copy pasting of what I found
-on the internet. (I did adapt it a little bit)
-"""
 
 
 def connecttoserv(server, port, botnick):
