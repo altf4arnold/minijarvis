@@ -64,6 +64,11 @@ def messageanalyser(botnick, ctfmode):
         message = ircmsg.split('PRIVMSG', 1)[1].split(':', 1)[1]
 
     # Fun function to see the syntax and how it works.
+    if ctfmode is True:
+        response, nickresp = ctf.main(message, name)
+        if response != "nope":
+            sendmsg(response, nickresp)
+
     if message.find('Hi ' + botnick) != -1:
         # debug test because what the hell is this condition ???
         print("We are in for some reason ¯\_(ツ)_/¯")
@@ -93,8 +98,6 @@ def main():
     connecttoserv(server, port, botnick)
     joinchan(channel)
 
-    if ctfmode is True:
-        ctf.ctftrigger()
     # I know, while True is not clean. But it works.
     while True:
         messageanalyser(botnick, ctfmode)
