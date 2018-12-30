@@ -94,7 +94,7 @@ def main():
     botnick = "Mini-Jarvis"  # Your bots nick
     adminname = "Me"  # Your IRC nickname.
     exitcode = "bye " + botnick
-    ctfmode = True
+    ctfmode = False
 
     connecttoserv(server, port, botnick)
     joinchan(channel)
