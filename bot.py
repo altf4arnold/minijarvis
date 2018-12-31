@@ -6,6 +6,7 @@ situations
 """
 
 import socket
+import credentials as cred
 import ctf
 
 
@@ -89,9 +90,10 @@ def main():
     """
     server = "chat.freenode.net"  # Server
     port = 6667  # The port is 6667 on most servers
-    channel = "#amazingchannel"  # Channel
-    botnick = "Mini-Jarvis"  # Your bots nick
-    adminname = "Me"  # Your IRC nickname.
+    channel = cred.channel
+    botnick = cred.botnick
+    adminname = cred.adminname
+    password = cred.password
     exitcode = "bye " + botnick
     ctfmode = False
 
