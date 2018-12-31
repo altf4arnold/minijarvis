@@ -38,7 +38,7 @@ def joinchan(chan):
         print(ircmsg)
 
 
-def ping():
+def ping(message):
     """
     respond to ping
     """
@@ -62,6 +62,12 @@ def messageanalyser(botnick, ctfmode):
     ircmsg = ircmsg.strip('\n\r')
     # Usefull to debug
     print(ircmsg)
+    if ircmsg.find("PING :") != -1:
+        """
+        this one responds to ping \o/
+        (Still need to figure out why != -1)
+        """
+        ping()
 
     if ircmsg.find("PRIVMSG") != -1:
         name = ircmsg.split('!', 1)[0][1:]
@@ -78,12 +84,7 @@ def messageanalyser(botnick, ctfmode):
             sendmsg("Hello " + name + "!", name)
 
         # Required. If not implemented, might be kicked from the server
-        elif ircmsg.find("PING :") != -1:
-            """
-            this one responds to ping \o/
-            (Still need to figure out why != -1)
-            """
-            ping()
+
 
 
 def main():
