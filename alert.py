@@ -10,7 +10,7 @@ def alert():
     current = str(date.now()).split()
     string = ''
     time = []
-    for i in current:
+    for i in current[0]:
         if i == "-":
             time.append(int(string))
             string = ''
