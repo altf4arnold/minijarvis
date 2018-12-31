@@ -16,7 +16,8 @@ def alert():
             string = ''
         else:
             string = string + i
-    if time[2]==1 and current[1].find("00:00:0"):
+    time.append(int(string))
+    if time[2] == 1 and current[1].find("00:00:0"):
         toreturn = "Hey, please run /relay sslcertkey"
     else:
         toreturn = "nope"
