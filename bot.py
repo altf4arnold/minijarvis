@@ -10,7 +10,7 @@ import credentials as cred
 import ctf
 
 
-def connecttoserv(server, port, botnick):
+def connecttoserv(server, port, botnick, password):
     """
     This connects the bot to the server. The code is prety straight forward.
     If you want more info, it's basicaly filling in a form for the irc server
@@ -18,6 +18,7 @@ def connecttoserv(server, port, botnick):
     ircsock.connect((server, port))
     ircsock.send(bytes("USER " + botnick + " " + botnick + " " + botnick + " " + botnick + "\n", "UTF-8"))
     ircsock.send(bytes("NICK " + botnick + "\n", "UTF-8"))
+    ircsock.send(bytes("PRIVMSG nickserv : identify " + password + "\r\n", "UTF-8"))
 
 
 def joinchan(chan):
@@ -97,7 +98,7 @@ def main():
     exitcode = "bye " + botnick
     ctfmode = False
 
-    connecttoserv(server, port, botnick)
+    connecttoserv(server, port, botnick, password)
     joinchan(channel)
 
     # I know, while True is not clean. But it works.
