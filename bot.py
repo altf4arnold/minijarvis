@@ -8,6 +8,7 @@ situations
 import socket
 import credentials as cred
 import ctf
+import alert
 
 
 def connecttoserv(server, port, botnick, password):
@@ -66,23 +67,23 @@ def messageanalyser(botnick, ctfmode):
         name = ircmsg.split('!', 1)[0][1:]
         message = ircmsg.split('PRIVMSG', 1)[1].split(':', 1)[1]
 
-    # Fun function to see the syntax and how it works.
-    if ctfmode:
-        print(message)
-        response, nickresp = ctf.main(message, name)
-        if response != "nope":
-            sendmsg(response, nickresp)
+        # Fun function to see the syntax and how it works.
+        if ctfmode:
+            print(message)
+            response, nickresp = ctf.main(message, name)
+            if response != "nope":
+                sendmsg(response, nickresp)
 
-    if message.find('Hi ' + botnick) != -1:
-        sendmsg("Hello " + name + "!", name)
+        elif message.find('Hi ' + botnick) != -1:
+            sendmsg("Hello " + name + "!", name)
 
-    # Required. If not implemented, might be kicked from the server
-    if ircmsg.find("PING :") != -1:
-        """
-        this one responds to ping \o/
-        (Still need to figure out why != -1)
-        """
-        ping()
+        # Required. If not implemented, might be kicked from the server
+        elif ircmsg.find("PING :") != -1:
+            """
+            this one responds to ping \o/
+            (Still need to figure out why != -1)
+            """
+            ping()
 
 
 def main():
@@ -104,6 +105,9 @@ def main():
     # I know, while True is not clean. But it works.
     while True:
         messageanalyser(botnick, ctfmode)
+        tosend = alert.alert()
+        if tosend != "nope":
+            sendmsg(tosend, adminname)
 
 
 # Yikes, global vars
