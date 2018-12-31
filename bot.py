@@ -38,7 +38,7 @@ def joinchan(chan):
         print(ircmsg)
 
 
-def ping(message):
+def ping():
     """
     respond to ping
     """
