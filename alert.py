@@ -4,6 +4,7 @@ to refresh the SSL cert on his irc client
 """
 
 from datetime import datetime as date
+import time
 
 
 def alert():
@@ -17,8 +18,9 @@ def alert():
         else:
             string = string + i
     time.append(int(string))
-    if time[2] == 1 and current[1].find("00:00:0"):
+    if time[2] == 1 and current[1].find("00:00:00"):
         toreturn = "Hey, please run /relay sslcertkey"
+        time.sleep(1)
     else:
         toreturn = "nope"
     return toreturn
