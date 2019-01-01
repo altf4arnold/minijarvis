@@ -18,7 +18,8 @@ def alert():
         else:
             string = string + i
     time.append(int(string))
-    if time[2] == 1 and current[1].find("00:00:00"):
+    if time[2] == 1 and current[1].find("00:00:00") != -1:
+        print(current[1])
         toreturn = "Hey, please run /relay sslcertkey"
         sleep.sleep(1)
     else:
