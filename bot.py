@@ -41,6 +41,8 @@ def joinchan(chan):
 def ping():
     """
     respond to ping
+    This function is critical ! do not remove or you will be kicked by the
+    server on timeout.
     """
     ircsock.send(bytes("PONG :pingis\n", "UTF-8"))
 
@@ -73,7 +75,7 @@ def messageanalyser(botnick, ctfmode):
         name = ircmsg.split('!', 1)[0][1:]
         message = ircmsg.split('PRIVMSG', 1)[1].split(':', 1)[1]
 
-        # Fun function to see the syntax and how it works.
+        # Here you can put triggers on specific message patterns
         if ctfmode:
             print(message)
             response, nickresp = ctf.main(message, name)
@@ -82,9 +84,6 @@ def messageanalyser(botnick, ctfmode):
 
         elif message.find('Hi ' + botnick) != -1:
             sendmsg("Hello " + name + "!", name)
-
-        # Required. If not implemented, might be kicked from the server
-
 
 
 def main():
@@ -96,6 +95,8 @@ def main():
     channel = cred.channel
     botnick = cred.botnick
     adminname = cred.adminname
+    # You can comment the line password even tough  I recommend to register
+    # The nickname if you want to be able to send privmsg on freenode
     password = cred.password
     exitcode = "bye " + botnick
     ctfmode = False
