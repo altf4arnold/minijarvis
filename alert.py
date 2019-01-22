@@ -20,6 +20,7 @@ def alert():
     time.append(int(string))
     if time[2] == 1 and current[1].find("00:00:00") != -1:
         toreturn = "Hey, please run /relay sslcertkey"
+        # The line beyond is a VERY dirty fix. to be refactored
         sleep.sleep(1)
     else:
         toreturn = "nope"
