@@ -13,4 +13,4 @@ python bot.py
 
 ## Tricky part :
 Warning, there is a .find in the code that needs to be modified if you are using this bot on something other then a freenode irc server.
-It will indicate to the bot when he is connected.
+It will indicate to the bot when he is connected and can start to interact with humans (or other bot's)
